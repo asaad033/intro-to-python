@@ -4,22 +4,30 @@
 
 countries = ('USA', 'Canada', 'United Kingdom', 'Mexico', 'Brazil', 'Argentina', 'Chili', 'South Africa', 'Egypt',
              'Morocco', 'India', 'China', 'Ukraine', 'Spain', 'France', 'Russia')
-your_choice_country = 'Canada'
+your_choice_country = 'Germany'
 
-def find_index_by_value(value, tuple1):
-    pass
+def find_index_by_value(value, tuple):
+    for country in tuple:
+        if country == value:
+            return value
+    return -1
 
+# print(find_index_by_value(your_choice_country, countries))
 
 # Change the previous exercise. Enter a random number and save it to variable your_choice_number. Write
 # find_value_by_index function which will check if the tuple countries contains a country with this index.
 # If there is a value with this index your_choice_number in the tuple, return this value,
 # otherwise return a 'No such index' text
 
-your_choice_number = 7
+your_choice_number = 16
 
-def find_value_by_index(index, tuple1):
-    pass
+def find_value_by_index(index, tuple):
+    if index < len(tuple):
+        return tuple[index]
+    else:
+        return "No such index"
 
+# print (find_value_by_index(your_choice_number, countries))
 
 # Enter a pair of values in variables new_team_name, new_team_city. Then write add_your_own_team function
 # to add them to nhl_hockey_teams dictionary, where the name will be the key.
@@ -51,27 +59,35 @@ nhl_hockey_teams = {
 }
 
 def add_your_own_team(team_name, team_city):
-    pass
+    nhl_hockey_teams[team_name] = team_city
+    return nhl_hockey_teams
 
+# print(add_your_own_team(new_team_name,new_team_city))
 
 # Create two dictionaries in dict_1, dict_2 variables. Write a join_dicts function to concatenate the following
 # dictionaries to create a new one.
 
-dict_1 = None
-dict_2 = None
+dict_1 = {'Kareem': 13, 'Hannah': 7, 'Haneen': 3}
+dict_2 = {'Noor': 2, 'Malik': 1}
 
 def join_dicts(dict1, dict2):
-    pass
+    dict2.update(dict1)
+    return dict2
 
+# print(join_dicts(dict_1, dict_2))
 
 # # Enter a random number and save it to number_1 variable. Then write create_numbers_dict function to generate
 # a dictionary that contains items with keys from 1 to number_1 and values in format "x": "x**2".
 
-number_1 = None
+number_1 = 8
 
 def create_numbers_dict(number1):
-    pass
+    my_dict = {}
+    for i in range (1, number1+1):
+        my_dict[i] = i**2
+    return my_dict
 
+# print (create_numbers_dict(number_1))
 
 # Write sum_up_hockey_cups functions to sum all values in a dictionary dict_3.
 
@@ -99,8 +115,11 @@ dict_3 = {
 }
 
 def sum_up_hockey_cups(teams_dict, result = 0):
-    pass
+    for i in teams_dict:
+        result += teams_dict[i]
+    return result
 
+# print (sum_up_hockey_cups(dict_3))
 
 # Write remove_item_by_key function to remove a key True from dict_4 dictionary.
 
@@ -112,7 +131,10 @@ dict_4 = {
 }
 
 def remove_item_by_key(dict1):
-    pass
+    dict1.pop(True)
+    return dict1
+
+# print(remove_item_by_key(dict_4))
 
 
 dict_5 = {
@@ -135,7 +157,10 @@ dict_5 = {
 }
 
 def find_min_max(dict1):
-    pass
+    all_values = dict1.values()
+    return min(all_values), max(all_values)
+
+# print(find_min_max(dict_5))
 
 
 # Write remove_duplicates functions to remove duplicates from dictionary dict_6.
@@ -153,5 +178,15 @@ dict_6 = {
     "Bailey": "labrador"
 }
 
-def remove_duplicates():
-    pass
+
+def remove_duplicate_values(dictionary):
+    val_list = []
+    result_dict = {}
+    for key, val in dictionary.items():
+        if val not in val_list:
+            val_list.append(val)
+            result_dict[key] = val
+    return result_dict
+
+# print(remove_duplicate_values(dict_6))
+
